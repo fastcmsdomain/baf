@@ -31,11 +31,13 @@ export default function decorate(block) {
       }
       
       // Check for description (p tags or other text content)
+      // Filter out paragraphs that contain pictures
       const paragraphs = cell.querySelectorAll('p');
-      if (paragraphs.length > 0 && !content.description) {
+      const textParagraphs = Array.from(paragraphs).filter((p) => !p.querySelector('picture'));
+      if (textParagraphs.length > 0 && !content.description) {
         const descWrapper = document.createElement('div');
         descWrapper.className = 'hero-description';
-        paragraphs.forEach((p) => descWrapper.appendChild(p));
+        textParagraphs.forEach((p) => descWrapper.appendChild(p));
         content.description = descWrapper;
       }
     });

@@ -84,6 +84,11 @@
   margin-top: 0;
 }
 
+/* Hide paragraphs with pictures in hero-description */
+.hero-description p:has(picture) {
+  display: none;
+}
+
 .hero-description p {
   margin: 0 0 16px;
   color: inherit;

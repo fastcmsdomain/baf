@@ -1,37 +1,114 @@
+/* Hero container and wrapper - no padding/max-width restrictions */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
+/* Hero block - full viewport height with relative positioning */
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
+/* Image wrapper - full bleed, covers entire viewport */
+.hero-image-wrapper {
   position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
-}
-
-.hero img {
-  object-fit: cover;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 
+.hero-image-wrapper picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Blue overlay - 0.6 opacity covering entire image */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0.6);
+  z-index: 1;
+}
+
+/* Content wrapper - centered in middle of viewport */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--background-color, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero title styles */
+.hero-content h1,
+.hero-content h2,
+.hero-content h3 {
+  margin: 0 0 24px;
+  color: inherit;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h1:last-child,
+.hero-content h2:last-child,
+.hero-content h3:last-child {
+  margin-bottom: 0;
+}
+
+/* Hero description styles */
+.hero-description {
+  margin-top: 0;
+}
+
+.hero-description p {
+  margin: 0 0 16px;
+  color: inherit;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.hero-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
 @media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+  .hero-content {
+    padding: 60px 32px;
+  }
+
+  .hero-content h1,
+  .hero-content h2,
+  .hero-content h3 {
+    font-size: 3rem;
+  }
+
+  .hero-description p {
+    font-size: 1.25rem;
   }
 }
